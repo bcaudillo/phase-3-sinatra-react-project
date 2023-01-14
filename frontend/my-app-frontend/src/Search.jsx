@@ -1,4 +1,4 @@
-import {state,useState} from "react";
+import {useState} from "react";
 
 
 function Search({cards, setSpread,isTarotCard}){
@@ -24,6 +24,7 @@ function Search({cards, setSpread,isTarotCard}){
         <div>
             <h1>Search our product!</h1>
             <p> The goal for this componenet is to display all the cards that match the search  material and give the client an oppurtunity to add this item to their cart</p>
+            <p>This will be the <b>Read</b> and <b>Delete</b> portion of the application </p>
             <form className="searchbar" onChange={handleChange}>
                 <input
                     type="text"
