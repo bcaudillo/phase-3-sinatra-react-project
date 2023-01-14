@@ -1,8 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import React,{useEffect,useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Route, Routes
+} from 'react-router-dom'
+import NavBar from './NavBar'
 import Search from './Search';
 import About from './About';
+import Cart from './Cart'
+import AddBeer from './AddBeer';
 
 
 function App() {
@@ -16,11 +23,17 @@ function App() {
   //     })})
 
   return (
-    <div>
-      <h1>Beer!</h1>
-        <About/>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element= {<About />}/>
+        <Route path="/search" element = {<Search />}></Route>
+        <Route path="/cart" element = {<Cart/>}></Route>
+        <Route path="/beer" element = {<AddBeer/>}></Route>
+        
+      </Routes>
 
-    </div>
+    </Router>
   );
 }
 
