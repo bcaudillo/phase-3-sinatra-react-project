@@ -1,39 +1,28 @@
 import React, {useState} from 'react'
 import {Form} from "semantic-ui-react";
+import { headers,baseUrl } from './Globals';
 
 
 function AddBeer(){
-    const blankState ={
-        id: "",
-        name: "",
-        number_of_cards: "",
-        spread_meaning: "",
-      }
-    
-    const [formData, setFormData] = useState(blankState);
-    
-    function handleChange(event) {
-      setFormData({
-        ...formData,
-        [event.target.name]: event.target.value,
-      });
-    }
+    const [brands, setBrands]=useState("")
+    const [names, setNames]=useState("")
+    const [styles, setStyles]=useState("")
+    const [ibu, setIbu]=useState("")
+    const [abv, setAbv]=useState("")
+    const params ={brands,names,styles,ibu,abv}
 
+   
     function handleSubmit(e) {
-        <h1>e.target.value</h1>
-    //     e.preventDefault();
-    //     const configObj={
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     }
-    //     fetch("http://localhost:3000/spread",configObj)
-    //       .then((r) => r.json())
-    //       .then((data)=>handleAddCard(data));
-    //       setFormData(blankState)
+        // e.preventDefault();
+       
+        
+        fetch(baseUrl + "/addbeer",{
+            method: "POST",
+            headers,
+            body: JSON.stringify(params)
+        })
     }
+            
   
     return(
         <div>
@@ -44,35 +33,43 @@ function AddBeer(){
                 <Form.Group widths="equal">
                     <Form.Input
                         fluid
-                        label="Name:"
-                        placeholder="Fat and Sassy"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
+                        label="Brand:"
+                        placeholder="Fat Tire"
+                        name="brand"
+                        value={brands}
+                        onChange={ e => setBrands(e.target.value)}
           />
+                    <Form.Input
+                        fluid
+                        label="Name:"
+                        placeholder="The good stuff"
+                        name="Name"
+                        value={names}
+                        onChange={e => setNames(e.target.value)}
+                    />
                     <Form.Input
                         fluid
                         label="Type:"
                         placeholder="Lager"
                         name="Type"
-                        value={formData.spread_meaning}
-                        onChange={handleChange}
+                        value={styles}
+                        onChange={e => setStyles(e.target.value)}
                     />
                     <Form.Input
                         fluid
-                        label="Cost:"
-                        placeholder="$6"
-                        name="Cost"
-                        value={formData.number_of_cards}
-                        onChange={handleChange}
+                        label="IBU"
+                        placeholder="70 IBU"
+                        name="ibu"
+                        value={ibu}
+                        onChange={e => setIbu(e.target.value)}
                     />
                     <Form.Input
                         fluid
-                        label="img_url"
-                        placeholder="No image"
-                        name="img_url"
-                        value={formData.number_of_cards}
-                        onChange={handleChange}
+                        label="ABV"
+                        placeholder="3.6%"
+                        name="abv"
+                        value={abv}
+                        onChange={e => setAbv(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Button>Submit</Form.Button>

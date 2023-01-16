@@ -1,7 +1,9 @@
 import {useState} from "react";
+import {beers} from "./App"
+import BeerList from "./BeerList";
 
 
-function Search({cards, setSpread,isTarotCard}){
+function Search({beers}){
     const [searchTerm, setSearchTerm] = useState("");
 
    
@@ -22,18 +24,31 @@ function Search({cards, setSpread,isTarotCard}){
       }
     return(
         <div>
-            <h1>Search our product!</h1>
-            <p> The goal for this componenet is to display all the cards that match the search  material and give the client an oppurtunity to add this item to their cart</p>
-            <p>This will be the <b>Read</b> and <b>Delete</b> portion of the application </p>
-            <form className="searchbar" onChange={handleChange}>
-                <input
-                    type="text"
-                    id="search"
-                    placeholder="search for card"
-                    value={searchTerm}
-                    onChange={(event)=>{handleChange(event)}}
-                />
-            </form>
+            <div>
+                <h1>Search our product!</h1>
+                <p> The goal for this componenet is to display all the cards that match the search  material and give the client an oppurtunity to add this item to their cart</p>
+                <p>This will be the <b>Read</b> and <b>Delete</b> portion of the application </p>
+                <h2>Possible features:</h2>
+                <ul>
+                    <li>A dropdown menu that you can click for filtering what you'd like to see</li>
+                    <li>Buttons to see all for type</li>
+                    <li>Delete button</li>
+                    <li>Add to cart button</li>
+                </ul>
+            </div>
+            <div>
+                <form className="searchbar" onChange={handleChange}>
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="search for beer by name"
+                        value={searchTerm}
+                        onChange={(event)=>{handleChange(event)}}
+                    />
+                </form>
+                <BeerList beers={beers}/>
+            </div>
+            
             {/* <CardsList cards={cardsToDisplay}  handleRemoveSpread={handleRemoveSpread} isTarotCard={isTarotCard}/> */}
 
         </div>

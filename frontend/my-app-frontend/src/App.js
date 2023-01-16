@@ -10,26 +10,41 @@ import Search from './Search';
 import About from './About';
 import Cart from './Cart'
 import AddBeer from './AddBeer';
+import BeerList from './BeerList';
+import { baseUrl } from './Globals';
 
 
 function App() {
   //Edit me
-  // const [spread,setSpread]=useState([])
-  // useEffect(()=>{
-  //     fetch("http://localhost:3000/cards")
-  //     .then(r=>r.json())
-  //     .then((cardsArray)=>{
-  //         setCards(cardsArray);
-  //     })})
+  const [beers,setBeers]=useState([])
+  const [carts, setCarts]=useState([])
+
+  
+
+  useEffect(()=>{
+    fetch(baseUrl + "/beerlist")
+    .then(r=>r.json())
+    .then(beers => setBeers(beers));
+    }
+
+
+    ,[])
+    useEffect(()=>{
+      fetch(baseUrl + "/cart")
+      .then(r=>r.json())
+      .then(carts => setCarts(carts));
+      }
+      ,[])
+  
 
   return (
     <Router>
       <NavBar />
       <Routes>
         <Route path="/" element= {<About />}/>
-        <Route path="/search" element = {<Search />}></Route>
-        <Route path="/cart" element = {<Cart/>}></Route>
-        <Route path="/beer" element = {<AddBeer/>}></Route>
+        <Route path="/beerlist" element = {<BeerList beers ={beers} setBeers={setBeers}/>}></Route>
+        <Route path="/cart" element = {<Cart carts={carts}/>}></Route>
+        <Route path="/addbeer" element = {<AddBeer />}></Route>
         
       </Routes>
 
