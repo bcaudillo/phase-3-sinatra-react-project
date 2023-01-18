@@ -4,6 +4,7 @@ class CreateCarts < ActiveRecord::Migration[6.1]
       t.string :item_name
       t.integer :quantity
       t.integer :beer_id
+      t.string :brands
     end
   end
 end

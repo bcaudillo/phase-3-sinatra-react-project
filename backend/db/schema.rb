@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_025411) do
+ActiveRecord::Schema.define(version: 2023_01_16_200203) do
 
   create_table "beers", force: :cascade do |t|
     t.string "brands"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2023_01_15_025411) do
     t.string "item_name"
     t.integer "quantity"
     t.integer "beer_id"
+    t.string "brands"
   end
 
 end
