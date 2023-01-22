@@ -1,33 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import BeerCard from "./BeerCard";
+import { baseUrl } from './Globals';
 
 
 
-function BeerList({beers}){
-
-    const [searchTerm, setSearchTerm] = useState("");
+function BeerList({beers, onChangeCart, onDeleteBeer}){
     
-       
-       
-   
-
-    const beerCards = beers.map(beer =><BeerCard key={beer.id} beer = {beer}/>)
-    function handleChange(event) {
-        setSearchTerm(event.target.value);
-        }
-
+    const beerCards = beers.map(beer =><BeerCard key={beer.id} beer = {beer} onChangeCart={onChangeCart} onDeleteBeer={onDeleteBeer}/>)
     return(
         <div>
             <h1>BeerList:</h1>
-            {/* <form className="searchbar" onChange={handleChange}>
-                    <input
-                        type="text"
-                        id="search"
-                        placeholder="search for beer by name"
-                        value={searchTerm}
-                        onChange={(event)=>{handleChange(event)}}
-                    />
-                </form> */}
             {beerCards}
         </div>
     )

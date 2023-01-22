@@ -1,19 +1,23 @@
 import React from "react";
-function Cart({carts}){
+import BeerCard from "./BeerCard";
+import CartCard from "./CartCard";
+
+function Cart({carts,onClear, onChangeCart, onDeleteCartItem,onUpdateCart}){
     
-    console.log(carts)
+    
+    const beerCards = carts.map(item =><CartCard key={item.id} carts={item} onChangeCart={onChangeCart} onDeleteCartItem ={onDeleteCartItem} onUpdateCart={onUpdateCart}/> )
+   
+    
     return(
         <div>
-            <h1 >Cart!</h1>
-            <p>The goal of this component is to display the items the user has added to their cart</p>
-            <p>The Cart component will give the user the ability to add new items to their cart for the <b>Update</b> capability of this app</p>
-            <h2>Possible features:</h2>
-            <ul>
-               
-                <li>delete an item from the cart</li>
+         
+            <h1>Cart:</h1>
 
-            </ul>
+            <button onClick ={onClear}>Clear cart</button>
             
+            {beerCards}       
+           
+
         </div>
     
     )

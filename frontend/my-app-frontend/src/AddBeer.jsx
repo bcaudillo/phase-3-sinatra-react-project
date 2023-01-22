@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import {Form} from "semantic-ui-react";
+import BeerList from './BeerList';
 import { headers,baseUrl } from './Globals';
 
 
-function AddBeer(){
+function AddBeer({beers,setBeers}){
     const [brands, setBrands]=useState("")
     const [names, setNames]=useState("")
     const [styles, setStyles]=useState("")
@@ -21,7 +22,10 @@ function AddBeer(){
             headers,
             body: JSON.stringify(params)
         })
+        .then(r=>r.json())
+        .then(console.log(beers))
     }
+   
             
   
     return(
@@ -74,6 +78,7 @@ function AddBeer(){
                 </Form.Group>
                 <Form.Button>Submit</Form.Button>
             </Form>
+            
         </div>
     )
 }
