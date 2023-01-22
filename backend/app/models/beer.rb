@@ -1,3 +1,3 @@
 class Beer < ActiveRecord::Base
-    belongs_to :cart
+    has_many :carts
 end

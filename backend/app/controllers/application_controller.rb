@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   patch "/cart/:id" do 
     @cart = Cart.find(params[:id])
     @cart.update(params)
-    @cart.to_json
+    @cart.to_json(include: :beer)
   end
 
   delete "/cart" do
@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
   post "/cart" do 
     @carts = Cart.new(params)
     @carts.save
-    @carts.to_json
+    @carts.to_json(include: :beer)
   end
   
   
@@ -59,20 +59,18 @@ class ApplicationController < Sinatra::Base
 
   get "/cart" do
     @carts = Cart.all
-    # @cart = Cart.select(:item_name).group(:item_name).having("count(*) > 1").size
-    # @cart1 = Cart.group(:item_name)
-    # if !@carts
-    #   "Cart empty"
-    # else
-      @carts.to_json
+   
+    @carts.to_json(include: :brands)
  
     # binding.pry
     # binding.pry
     # @cart.map do |item|
     #   item << @carts
     # end
-
-
+    #enoch note:
+    # nested json
+     # include associated reviews in the JSON response
+    #  game.to_json(include: :reviews)
     # @cart1.to_json
      
   end

@@ -1,3 +1,5 @@
 class Cart < ActiveRecord::Base
-    has_many :beers
+    belongs_to :beer
 end
+
+#cart is more like cart item
