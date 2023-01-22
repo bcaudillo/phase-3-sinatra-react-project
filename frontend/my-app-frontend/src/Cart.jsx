@@ -2,12 +2,11 @@ import React from "react";
 import BeerCard from "./BeerCard";
 import CartCard from "./CartCard";
 
-function Cart({carts,onClear, onChangeCart, onDeleteCartItem,onUpdateCart}){
+function Cart({carts,onClear, onDeleteCartItem, onUpdateCart}){
     
     
-    const beerCards = carts.map(item =><CartCard key={item.id} carts={item} onChangeCart={onChangeCart} onDeleteCartItem ={onDeleteCartItem} onUpdateCart={onUpdateCart}/> )
-   
-    
+    const beerCards = carts.map(item =><CartCard key={item.id} carts={item} onDeleteCartItem ={onDeleteCartItem} onUpdateCart={onUpdateCart}/> )
+  
     return(
         <div>
          

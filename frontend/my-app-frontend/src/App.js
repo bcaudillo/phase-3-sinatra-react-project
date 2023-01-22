@@ -11,6 +11,7 @@ import Cart from './Cart'
 import AddBeer from './AddBeer';
 import BeerList from './BeerList';
 import { baseUrl } from './Globals';
+import { BreadcrumbSection } from 'semantic-ui-react';
 
 
 function App() {
@@ -32,10 +33,10 @@ function App() {
     ,[])
       //take original cart and spread and add new cart to array 
 
-  function onDeleteBeer(){
-    console.log(beers)
-    setBeers([...beers])
-  }
+  // function onDeleteBeer(){
+  //   console.log(beers)
+  //   setBeers([...beers])
+  // }
   function onUpdateCart(cart){
     console.log(cart)
     console.log(carts)
@@ -44,24 +45,36 @@ function App() {
     console.log(carts)
     setCarts([...carts])
   }
-   function onChangeCart(cart){
-      cart.quantity++
-      console.log(cart)
-   }
+  function onAddToCart(cart){
+    console.log(cart)
+    setCarts([...carts, cart])
+  }
    function onClear(){
-    setCarts([])
-    fetch(baseUrl+ '/cart',{
-      method: "DELETE"
-    })
-   }
+     fetch(baseUrl+ '/cart',{
+       method: "DELETE"
+      })
+      setCarts([])
+    }
 
-console.log(carts)
+   function onAddBeer(beer){
+    console.log(beer)
+    setBeers([...beers, beer])
+   } 
+   console.log(beers)
+   function onDeleteBeerItem(index){
+    console.log(index)
+    const newArray = beers.splice(index, 1)
+    console.log(newArray)
+    console.log(beers)
+    setBeers([...beers])
+   }
    function onDeleteCartItem(index){
     console.log(index)
     carts.splice(index, 1)
     console.log(carts)
     setCarts([...carts])
    }
+   console.log(carts)
   
 
   return (
@@ -69,9 +82,9 @@ console.log(carts)
       <NavBar />
       <Routes>
         <Route path="/" element= {<About />}/>
-        <Route path="/beerlist" element = {<BeerList beers ={beers} onDeleteBeer={onDeleteBeer} onChangeCart={onChangeCart}/>}></Route>
-        <Route path="/cart" element = {<Cart  carts={carts} onChangeCart={onChangeCart} onDeleteCartItem={onDeleteCartItem} onUpdateCart={onUpdateCart} onClear={onClear}/>}></Route>
-        <Route path="/addbeer" element = {<AddBeer />}></Route>
+        <Route path="/beerlist" element = {<BeerList beers ={beers} onDeleteBeerItem={onDeleteBeerItem} onAddToCart={onAddToCart} onUpdateCart/>}></Route>
+        <Route path="/cart" element = {<Cart  carts={carts} onUpdateCart={onUpdateCart} onDeleteCartItem={onDeleteCartItem} onClear={onClear}/>}></Route>
+        <Route path="/addbeer" element = {<AddBeer onAddBeer={onAddBeer}/>}></Route>
         
       </Routes>
 

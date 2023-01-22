@@ -2,8 +2,10 @@ import React from "react";
 function About(){
     return(
         <div>
-            <h1 >About Section!</h1>
-            <p>The goal of this component is to give the user a description of the application and what it sells</p>
+            <h1 >My Beer Store</h1>
+            <p>Welcome to the beer store! Feel free to add items to your cart of interest. If you see something we don't have, no problem. Just go ahead and click the addbeer link and we'll find it for  you. 
+                
+            </p>
         </div>
     )
 }

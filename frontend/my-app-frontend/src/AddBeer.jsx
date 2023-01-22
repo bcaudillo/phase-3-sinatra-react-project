@@ -4,7 +4,7 @@ import BeerList from './BeerList';
 import { headers,baseUrl } from './Globals';
 
 
-function AddBeer({beers,setBeers}){
+function AddBeer({onAddBeer}){
     const [brands, setBrands]=useState("")
     const [names, setNames]=useState("")
     const [styles, setStyles]=useState("")
@@ -23,7 +23,7 @@ function AddBeer({beers,setBeers}){
             body: JSON.stringify(params)
         })
         .then(r=>r.json())
-        .then(console.log(beers))
+        .then(beer =>onAddBeer(beer))
     }
    
             

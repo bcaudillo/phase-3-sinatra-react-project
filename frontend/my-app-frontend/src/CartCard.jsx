@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import {baseUrl, headers} from "./Globals"
 
-function CartCard({carts, onChangeCart, onDeleteCartItem, onUpdateCart}){
+function CartCard({carts, onDeleteCartItem, onUpdateCart}){
     const params = {id: carts.id, item_name: carts.item_name, quantity: carts.quantity}
   
 
@@ -22,6 +22,7 @@ function CartCard({carts, onChangeCart, onDeleteCartItem, onUpdateCart}){
           headers,
           body: JSON.stringify(params)
         })
+        .then(r=>r.json())
         .then((carts)=>onUpdateCart(carts))
       
       }
@@ -42,9 +43,6 @@ function CartCard({carts, onChangeCart, onDeleteCartItem, onUpdateCart}){
         <div>
             <h4 key = {carts.id}>{carts.item_name}</h4>
             <p>
-              <b>Quantity: </b> 
-              {carts.quantity}
-              <br></br>
               <b> Brand: </b>
               {carts.beer.brands}
               <br></br>
@@ -53,6 +51,9 @@ function CartCard({carts, onChangeCart, onDeleteCartItem, onUpdateCart}){
               <br></br>
               <b>Style:</b>
               {carts.beer.styles}
+              <br></br>
+              <b>Quantity: </b> 
+              {carts.quantity}
             </p>
             <button onClick={onAdd}>+</button>
             <button onClick={onSubtract}>-</button>

@@ -4,7 +4,7 @@ import {Form} from "semantic-ui-react";
 import AddBeer from './AddBeer';
 
 
-function BeerCard({beer,onChangeCart, onDeleteBeer}){
+function BeerCard({beer,onAddToCart, onDeleteBeerItem, onUpdateCart}){
     // const [brands, setBrands]=useState("")
     // const [names, setNames]=useState("")
     // const [styles, setStyles]=useState("")
@@ -18,20 +18,21 @@ function BeerCard({beer,onChangeCart, onDeleteBeer}){
     
 
     function handleAdd(){
+        params.quantity = 1
         fetch(baseUrl + `/cart`,{
             method: "POST",
             headers,
             body: JSON.stringify(params)
         })
         .then(r=>r.json())
-        .then((cart)=>onChangeCart(cart))
+        .then((cart)=>onAddToCart(cart))
     }
     function handleDelete(){
         fetch(baseUrl + `/beerlist/${beer.id}`,{
           method: "DELETE"
         })
         .then(r=>r.json())
-        .then((beer)=>onDeleteBeer(beer))
+        .then((beer)=>onDeleteBeerItem(beer))
       }
 
     return(
