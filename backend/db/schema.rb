@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_22_192246) do
+ActiveRecord::Schema.define(version: 2023_01_24_010217) do
+
+  create_table "beer_styles", force: :cascade do |t|
+  end
 
   create_table "beers", force: :cascade do |t|
     t.string "brands"
@@ -18,15 +21,6 @@ ActiveRecord::Schema.define(version: 2023_01_22_192246) do
     t.string "styles"
     t.string "ibu"
     t.string "abv"
-    ##t.integer cart_id //add
-  end
-
-  create_table "carts", force: :cascade do |t|
-    # t.string "cart_name" ## add all that exist are associated to one cart. 
-    # t.string "item_name" ##omit
-    # t.integer "quantity" ##omit
-    # t.integer "beer_id" do not need
-    # what needs to happen here is I need to have many carts
   end
 
 end

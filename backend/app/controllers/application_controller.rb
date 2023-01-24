@@ -10,20 +10,20 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  patch "/cart/:id" do 
+  patch "/beerstyles/:id" do 
     @cart = Cart.find(params[:id])
     @cart.update(params)
     @cart.to_json(include: :beer)
   end
 
-  delete "/cart" do
+  delete "/beerstyles" do
     @cart = Cart.destroy_all
   end
 
 
 
 
-  delete "/cart/:id" do
+  delete "/beerstyles/:id" do
     @cart= Cart.find(params[:id])
     @cart.destroy
     @cart.to_json
@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
     @beer.to_json
   end
 
-  post "/cart" do 
+  post "/beerstyles" do 
     @carts = Cart.new(params)
     @carts.save
     @carts.to_json(include: :beer)
@@ -48,7 +48,7 @@ class ApplicationController < Sinatra::Base
     @beer.to_json
   end
 
-  get "/cart" do
+  get "/beerstyles" do
     @carts = Cart.all
     @carts.to_json(include: :beer)
 
