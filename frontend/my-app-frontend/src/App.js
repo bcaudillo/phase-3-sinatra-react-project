@@ -12,6 +12,7 @@ import AddBeer from './AddBeer';
 import BeerList from './BeerList';
 import { baseUrl } from './Globals';
 import { BreadcrumbSection } from 'semantic-ui-react';
+import BeerStyles from './BeerStyles';
 
 
 function App() {
@@ -83,7 +84,7 @@ function App() {
       <Routes>
         <Route path="/" element= {<About />}/>
         <Route path="/beerlist" element = {<BeerList beers ={beers} onDeleteBeerItem={onDeleteBeerItem} onAddToCart={onAddToCart} onUpdateCart/>}></Route>
-        <Route path="/cart" element = {<Cart  carts={carts} onUpdateCart={onUpdateCart} onDeleteCartItem={onDeleteCartItem} onClear={onClear}/>}></Route>
+        <Route path="/beerstyles" element = {<BeerStyles  carts={carts} onUpdateCart={onUpdateCart} onDeleteCartItem={onDeleteCartItem} onClear={onClear}/>}></Route>
         <Route path="/addbeer" element = {<AddBeer onAddBeer={onAddBeer}/>}></Route>
         
       </Routes>

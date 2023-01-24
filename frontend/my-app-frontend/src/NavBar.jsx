@@ -6,7 +6,7 @@ function NavBar(){
         <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/beerlist">See beer list</Link></li>
-            <li><Link to="/cart">Cart</Link></li>
+            <li><Link to="/beerstyles">Cart</Link></li>
             <li><Link to="/addbeer">Add a Beer</Link></li>
         </ul>
     )

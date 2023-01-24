@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { baseUrl, headers } from './Globals';
-import {Form} from "semantic-ui-react";
-import AddBeer from './AddBeer';
+
 
 
 function BeerCard({beer,onAddToCart, onDeleteBeerItem, onUpdateCart}){
