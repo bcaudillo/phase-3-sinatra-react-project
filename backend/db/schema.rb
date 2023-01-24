@@ -18,12 +18,15 @@ ActiveRecord::Schema.define(version: 2023_01_22_192246) do
     t.string "styles"
     t.string "ibu"
     t.string "abv"
+    ##t.integer cart_id //add
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "item_name"
-    t.integer "quantity"
-    t.integer "beer_id"
+    # t.string "cart_name" ## add all that exist are associated to one cart. 
+    # t.string "item_name" ##omit
+    # t.integer "quantity" ##omit
+    # t.integer "beer_id" do not need
+    # what needs to happen here is I need to have many carts
   end
 
 end
